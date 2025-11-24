@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import axios from ".././lib/api"
+import axios from "../lib/api"
 
 export default function Home() {
   const router = useRouter();

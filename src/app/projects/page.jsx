@@ -3,20 +3,30 @@
 import { useEffect, useState } from "react";
 import api from "../../lib/api";
 import Link from "next/link";
+import ProjectCard from "../projects/[id]/components/ProjectCard"
+
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resUser = await api.get("/auth/me");
-        setUser(resUser.data.user);
+        const userRes = await api.get("/auth/me");
+        setUser(userRes.data.user);
 
-        const resProjects = await api.get("/projects");
-        setProjects(resProjects.data.projects);
+        const projectRes = await api.get("/projects");
+        setProjects(projectRes.data.projects);
+
+        const allTasks = [];
+        for (let project of projectRes.data.projects) {
+          const taskRes = await api.get(`/projects/${project.id}/tasks`);
+          allTasks.push(...taskRes.data.tasks);
+        }
+        setTasks(allTasks);
       } catch (err) {
         console.error(err);
       } finally {
@@ -27,47 +37,40 @@ export default function ProjectsPage() {
   }, []);
 
   if (loading)
-    return (
-      <p className="p-6 text-gray-600 font-medium text-center text-lg">
-        Loading...
-      </p>
-    );
+    return <p className="text-center p-6 text-lg text-gray-500">Loading...</p>;
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-extrabold text-green-600 tracking-wide">
-          PROJECTS
+    <div className="p-8 bg-white min-h-screen">
+      
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-4xl font-extrabold text-indigo-700 tracking-wide">
+          Projects
         </h1>
+
         {user?.role === "ADMIN" && (
           <Link
             href="/projects/create"
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-3 rounded-md shadow-md transition focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all"
           >
-            Add Project
+            + Add Project
           </Link>
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <Link
-            key={project.id}
-            href={`/projects/${project.id}`}
-            className="bg-white shadow-sm rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 ease-in-out"
-          >
-            <h2 className="text-xl font-bold text-gray-900 truncate">
-              {project.name}
-            </h2>
-            <p className="text-purple-600 mt-3 min-h-[3rem]">
-              {project.description || "No description"}
-            </p>
-            <p className="text-sm text-gray-700 mt-5 italic">
-              Created by: {project.created_by || "Unknown"}
-            </p>
-          </Link>
-        ))}
-      </div>
+    
+      {projects.length === 0 ? (
+        <p className="text-center text-gray-500">No projects available</p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              tasks={tasks}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
