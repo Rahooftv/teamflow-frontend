@@ -23,11 +23,11 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="bg-white shadow-lg px-8 py-5 flex justify-between items-center ">
+    <header className="bg-black shadow-lg px-8 py-5 flex justify-between items-center ">
 
       <div className="flex items-center gap-3">
        
-        <h1 className="text-2xl font-extrabold text-gray-800 tracking-tight select-none">TeamFlow</h1>
+        <h1 className="text-2xl font-extrabold text-white tracking-tight select-none">TeamFlow</h1>
       </div>
 
      
@@ -38,11 +38,8 @@ export default function Header() {
           <div className="flex items-center gap-3">
           
             <div className="flex flex-col items-start">
-              <span className="text-gray-800 font-semibold">Name: {user.name}</span>
-              <span className="text-[11px] text-blue-600 font-medium uppercase px-6 py-1 ">
-
-               Role: {user.role}
-              </span>
+              <span className="text-white font-semibold">Name: {user.name}</span>
+            
             </div>
           </div>
         ) : (
