@@ -63,12 +63,7 @@ export default function ProjectCard({ project, tasks, userRole, onEdit, onDelete
       {userRole === "ADMIN" && (
         <div className="flex gap-3 mt-4 pt-3 border-t border-slate-200">
 
-          <button
-            onClick={() => router.push(`/projects/${project.id}`)}
-            className="text-sm text-indigo-600 flex items-center gap-2 bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-100 rounded-lg py-2 px-3 font-medium"
-          >
-            View Tasks
-          </button>
+          
           <button
             onClick={() => onEdit(project)}
             className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 rounded-lg py-2 text-sm font-medium"

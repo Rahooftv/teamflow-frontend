@@ -23,19 +23,19 @@ export default function TaskCard({ task, userRole, onEdit, onDelete }) {
   };
 
   const priorityConfig = {
-    low: {
+    LOW: {
       bg: "bg-blue-50",
       text: "text-blue-700",
       border: "border-blue-200",
       dot: "bg-blue-500"
     },
-    medium: {
+    MEDIUM: {
       bg: "bg-amber-50",
       text: "text-amber-700",
       border: "border-amber-200",
       dot: "bg-amber-500"
     },
-    high: {
+    HIGH: {
       bg: "bg-red-50",
       text: "text-red-700",
       border: "border-red-200",
@@ -44,7 +44,7 @@ export default function TaskCard({ task, userRole, onEdit, onDelete }) {
   };
 
   const status = statusConfig[task.status] || statusConfig.TODO;
-  const priority = priorityConfig[task.priority?.toLowerCase()] || priorityConfig.low;
+  const priority = priorityConfig[task.priority?.toLowerCase()] || priorityConfig.LOW;
 
   return (
     <div className="bg-purple-100 border border-slate-200 rounded-xl p-5 hover:shadow-lg hover:border-slate-300 transition-all duration-300 group">
