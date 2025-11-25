@@ -3,14 +3,28 @@
 import { useEffect, useState } from "react";
 import api from "../../lib/api";
 import Link from "next/link";
-import ProjectCard from "../../components/ui/ProjectCard"
-
+import { useRouter } from "next/navigation";
+import ProjectCard from "../../components/ui/ProjectCard";
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+
+  const router = useRouter();
+
+  const deleteProject = async (id) => {
+    if (!confirm("Are you sure you want to delete this project?")) return;
+
+    try {
+      await api.delete(`/projects/delete/${id}`);
+      setProjects(projects.filter((p) => p.id !== id));
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete project");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +40,7 @@ export default function ProjectsPage() {
           const taskRes = await api.get(`/projects/${project.id}/tasks`);
           allTasks.push(...taskRes.data.tasks);
         }
+
         setTasks(allTasks);
       } catch (err) {
         console.error(err);
@@ -33,6 +48,7 @@ export default function ProjectsPage() {
         setLoading(false);
       }
     };
+
     fetchData();
   }, []);
 
@@ -41,7 +57,6 @@ export default function ProjectsPage() {
 
   return (
     <div className="p-8 bg-white min-h-screen">
-      
       <div className="flex justify-between items-center mb-10">
         <h1 className="text-4xl font-extrabold text-indigo-700 tracking-wide">
           Projects
@@ -57,20 +72,18 @@ export default function ProjectsPage() {
         )}
       </div>
 
-    
-      {projects.length === 0 ? (
-        <p className="text-center text-gray-500">No projects available</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              tasks={tasks}
-            />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            tasks={tasks}
+            userRole={user?.role}
+            onEdit={(p) => router.push(`/projects/${p.id}/edit`)}
+            onDelete={(p) => deleteProject(p.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

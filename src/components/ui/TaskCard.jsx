@@ -47,7 +47,7 @@ export default function TaskCard({ task, userRole, onEdit, onDelete }) {
   const priority = priorityConfig[task.priority?.toLowerCase()] || priorityConfig.low;
 
   return (
-    <div className="bg-red-100 border border-slate-200 rounded-xl p-5 hover:shadow-lg hover:border-slate-300 transition-all duration-300 group">
+    <div className="bg-purple-100 border border-slate-200 rounded-xl p-5 hover:shadow-lg hover:border-slate-300 transition-all duration-300 group">
       <div className="flex items-start justify-between mb-3">
         <h3 className="font-semibold text-lg text-slate-800 group-hover:text-blue-600 transition-colors line-clamp-2 flex-1 pr-2">
           {task.title}
