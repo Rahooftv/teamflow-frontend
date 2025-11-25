@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { FiMail, FiLock, FiAlertCircle, FiCheckSquare } from "react-icons/fi";
+import { FiAlertCircle, FiCheckSquare } from "react-icons/fi";
 import axios from "../../lib/api";
 
 export default function LoginPage() {
@@ -65,7 +65,6 @@ export default function LoginPage() {
                 Email Address
               </label>
               <div className="relative">
-                <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                 <input
                   id="email"
                   type="email"
@@ -73,7 +72,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-slate-800"
+                  className="w-full pl-4 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-slate-800"
                 />
               </div>
             </div>
@@ -87,7 +86,6 @@ export default function LoginPage() {
                
               </div>
               <div className="relative">
-                <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                 <input
                   id="password"
                   type="password"
@@ -100,7 +98,7 @@ export default function LoginPage() {
                       handleSubmit(e);
                     }
                   }}
-                  className="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-slate-800"
+                  className="w-full pl-4 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-slate-800"
                 />
               </div>
             </div>

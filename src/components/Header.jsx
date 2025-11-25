@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FiBell, FiSearch, FiChevronDown } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 import axios from "../lib/api";
 
 export default function Header() {
@@ -26,12 +26,12 @@ export default function Header() {
   return (
     <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30 backdrop-blur-sm bg-white/95">
       <div className="px-6 lg:px-8 py-4 flex justify-between items-center">
-        {/* Left Section - Search */}
+      
         <div className="flex items-center gap-4 flex-1 max-w-xl">
         <h1 className="text-2xl font-extrabold text-black tracking-tight select-none">TeamFlow</h1>
         </div>
 
-        {/* Right Section - User Actions */}
+      
         <div className="flex items-center space-x-4">
           {loading ? (
             <div className="flex items-center space-x-2">
@@ -40,13 +40,8 @@ export default function Header() {
             </div>
           ) : user ? (
             <>
-              {/* Notifications */}
-              <button className="relative p-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-all duration-200">
-                <FiBell size={20} />
-                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
-              </button>
-
-              {/* User Profile Dropdown */}
+             
+              
               <div className="relative">
                 <button
                   onClick={() => setShowDropdown(!showDropdown)}
@@ -71,7 +66,6 @@ export default function Header() {
                   />
                 </button>
 
-                {/* Dropdown Menu */}
                 {showDropdown && (
                   <>
                     <div

@@ -76,7 +76,7 @@ export default function Dashboard() {
       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
          
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all duration-300">
+          <div className="bg-orange-300 rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all duration-300">
             <div className="flex items-center justify-between mb-4">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,7 +91,7 @@ export default function Dashboard() {
           </div>
 
    
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all duration-300">
+          <div className="bg-purple-300 rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all duration-300">
             <div className="flex items-center justify-between mb-4">
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +105,7 @@ export default function Dashboard() {
             <p className="text-4xl font-bold text-slate-800">{tasks.length}</p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all duration-300 md:col-span-2 lg:col-span-1">
+          <div className="bg-yellow-100 rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all duration-300 md:col-span-2 lg:col-span-1">
             <h3 className="text-sm font-semibold text-slate-600 uppercase tracking-wide mb-4">
               Task Status
             </h3>

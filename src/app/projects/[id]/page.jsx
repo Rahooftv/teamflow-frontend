@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { FiArrowLeft, FiPlus, FiAlertCircle, FiEdit2, FiTrash2 } from "react-icons/fi";
+import { FiArrowLeft, FiPlus, FiAlertCircle} from "react-icons/fi";
 import api from "../../../lib/api";
-import TaskCard from "./components/TaskCard";
+import TaskCard from "../../../components/ui/TaskCard";
 
 export default function ProjectDetailPage() {
   const params = useParams();

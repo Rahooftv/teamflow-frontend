@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import api from "../../lib/api";
 import Link from "next/link";
-import ProjectCard from "../projects/[id]/components/ProjectCard"
+import ProjectCard from "../../components/ui/ProjectCard"
 
 
 export default function ProjectsPage() {

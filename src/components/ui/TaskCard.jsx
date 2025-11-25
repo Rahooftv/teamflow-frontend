@@ -47,7 +47,7 @@ export default function TaskCard({ task, userRole, onEdit, onDelete }) {
   const priority = priorityConfig[task.priority?.toLowerCase()] || priorityConfig.low;
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-5 hover:shadow-lg hover:border-slate-300 transition-all duration-300 group">
+    <div className="bg-red-100 border border-slate-200 rounded-xl p-5 hover:shadow-lg hover:border-slate-300 transition-all duration-300 group">
       <div className="flex items-start justify-between mb-3">
         <h3 className="font-semibold text-lg text-slate-800 group-hover:text-blue-600 transition-colors line-clamp-2 flex-1 pr-2">
           {task.title}
@@ -90,14 +90,14 @@ export default function TaskCard({ task, userRole, onEdit, onDelete }) {
         <div className="flex gap-2 pt-2">
           <button
             onClick={() => onEdit?.(task)}
-            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-700 hover:text-blue-600 rounded-lg text-sm font-medium transition-all duration-200"
+            className="flex-1 flex items-center justify-center text-blue-500 gap-2 px-3 py-2 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300  hover:text-blue-600 rounded-lg text-sm font-medium transition-all duration-200"
           >
             <FiEdit2 size={14} />
             Edit
           </button>
           <button
             onClick={() => onDelete?.(task)}
-            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-slate-50 hover:bg-red-50 border border-slate-200 hover:border-red-300 text-slate-700 hover:text-red-600 rounded-lg text-sm font-medium transition-all duration-200"
+            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-slate-50 hover:bg-red-50 border border-slate-200 hover:border-red-300 text-red-500 hover:text-red-600 rounded-lg text-sm font-medium transition-all duration-200"
           >
             <FiTrash2 size={14} />
             Delete
